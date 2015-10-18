@@ -22,32 +22,23 @@ public class UsandoArvores {
         int i;
         Random gerador = new Random();
         
-        Tree raiz = new Tree(50);
+        Tree raiz = new Tree(5000);
         ///*
-        for(i=0;i<5;i++) {
-            Tree av = new Tree(gerador.nextInt(100));
+        for(i=0;i<500;i++) {
+            Tree av = new Tree(gerador.nextInt(10000));
             raiz.inserirNo(av);
             
             System.out.println("**********valor: "+av.getValor());
             System.out.println("**********fb: "+raiz.getFatorBalanceamento());
         }
         //*/
-        /*
-        raiz.inserirNo(new Tree(11));
-        raiz.inserirNo(new Tree(9));
-        raiz.inserirNo(new Tree(12));
-        raiz.inserirNo(new Tree(13));
 
-        
-        
         Scanner reader = new Scanner(System.in);
         System.out.println("Entre o valor a ser procurado: ");
         int valor = reader.nextInt();
         
         raiz.procurar(valor);
-        */
-         System.out.println("*fb ramo direito: "+raiz.getRamoDireito().getFatorBalanceamento());
-         System.out.println("*fb ramo esquerdo: "+raiz.getRamoEsquerdo().getFatorBalanceamento());
+        
          
     }
     

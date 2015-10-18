@@ -56,8 +56,6 @@ public class Tree {
         this.pai = pai;
     }
     
-    
-    
     public int getFatorBalanceamento() {
         return fatorBalanceamento;
     }
@@ -65,6 +63,7 @@ public class Tree {
     
     
     public boolean inserirNo(Tree tree) {
+        //verificar se a arvore nao tem filho
         if(tree.valor > this.valor) {
             return inserirNoDireita(tree);
         }else{
@@ -108,10 +107,12 @@ public class Tree {
             this.ramoDireito = tree;
             this.ramoDireito.setPai(this);
             this.fatorBalanceamento = this.fatorBalanceamento -1;
+            verificarBalanceamento();
             return this.fatorBalanceamento == 0; 
         }else{
             if(!this.ramoDireito.inserirNo(tree)) {
                 this.fatorBalanceamento = this.fatorBalanceamento -1;
+                verificarBalanceamento();
                 return this.fatorBalanceamento == 0;
             }else{
                 return true;
@@ -124,10 +125,12 @@ public class Tree {
             this.ramoEsquerdo = tree;
             this.ramoEsquerdo.setPai(this);
             this.fatorBalanceamento = this.fatorBalanceamento +1;
+            verificarBalanceamento();
             return this.fatorBalanceamento == 0;   
         }else{
             if(!this.ramoEsquerdo.inserirNo(tree)) {
                 this.fatorBalanceamento = this.fatorBalanceamento +1;
+                verificarBalanceamento();
                 return this.fatorBalanceamento == 0;
             }else{
                 return true;
@@ -138,9 +141,30 @@ public class Tree {
     private void verificarBalanceamento() {
         if(this.fatorBalanceamento > 1 || this.fatorBalanceamento < -1) {
             //rodar balanceamento
+            //balancear();
             System.out.println("nó "+this.valor+": está desbalanceada");
             System.out.println("FB: "+this.fatorBalanceamento);
         }
+    }
+    
+    private void balancear() {
+        //ainda será implementado
+    }
+    
+    private void simplesDireita() {
+        //ainda será implementado
+    }
+    
+    private void simplesEsquerda() {
+        //ainda será implementado
+    }
+    
+    private void duplaDireita() {
+        //ainda será implementado
+    }
+    
+    private void duplaEsquerda() {
+        //ainda será implementado
     }
     
 }
