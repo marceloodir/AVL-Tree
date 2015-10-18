@@ -74,31 +74,32 @@ public class Tree {
         return true;
     }
     
-    public void procurar(int valor) {
+    public Tree procurar(int valor) {
         if(valor > this.valor) {
-            procurarDireita(valor);
+            return procurarDireita(valor);
         }else{
             if(valor < this.valor) {
-                procurarEsquerda(valor);
+                return procurarEsquerda(valor);
             }else{
-                System.out.println("Encontrado");
+                return this;
+                //System.out.println("Encontrado");
             }
         }
     }
     
-    private void procurarDireita(int valor) {
+    private Tree procurarDireita(int valor) {
         if(this.ramoDireito != null) {
-            this.ramoDireito.procurar(valor);
+            return this.ramoDireito.procurar(valor);
         }else{
-            System.out.println("valor não encontrado");
+            return null;
         }
     }
     
-    private void procurarEsquerda(int valor) {
+    private Tree procurarEsquerda(int valor) {
         if(this.ramoEsquerdo != null) {
-            this.ramoEsquerdo.procurar(valor);
+            return this.ramoEsquerdo.procurar(valor);
         }else{
-            System.out.println("valor não encontrado");
+            return null;
         }
     }
     
@@ -145,6 +146,35 @@ public class Tree {
             System.out.println("nó "+this.valor+": está desbalanceada");
             System.out.println("FB: "+this.fatorBalanceamento);
         }
+    }
+    
+    public void removerNo(Tree tree) {
+        Tree encontrada = procurar(tree.getValor());
+        if (encontrada != null) {
+            if(encontrada.getRamoDireito() == null && encontrada.getRamoEsquerdo() == null) {
+                removerNoSemFilho(encontrada);
+            }else{
+                if(encontrada.getRamoDireito() != null && encontrada.getRamoEsquerdo() != null) {
+                    removerNoComDoisFilhos(encontrada);
+                }else{
+                    removerNoComUmFilho(encontrada);
+                }
+            }
+        }else{
+            System.out.println("Nó não existe nesta arvore");
+        }
+    }
+    
+    private void removerNoSemFilho(Tree tree) {
+        
+    }
+    
+    private void removerNoComUmFilho(Tree tree) {
+        
+    }
+    
+    private void removerNoComDoisFilhos(Tree tree) {
+        
     }
     
     private void balancear() {
